@@ -256,6 +256,11 @@ inline void wx_gtk_widget_set_can_focus(GtkWidget *widget, gboolean can)
 }
 #define gtk_widget_set_can_focus wx_gtk_widget_set_can_focus
 
+static inline gboolean wx_gtk_widget_has_focus(GtkWidget* widget)
+{
+    return GTK_WIDGET_HAS_FOCUS(widget);
+}
+#define gtk_widget_has_focus wx_gtk_widget_has_focus
 
 inline gboolean wx_gtk_widget_get_can_default(GtkWidget *widget)
 {
@@ -423,6 +428,14 @@ static inline void wx_gdk_cairo_set_source_window(cairo_t* cr, GdkWindow* window
     gdk_cairo_set_source_pixmap(cr, window, x, y);
 }
 #define gdk_cairo_set_source_window wx_gdk_cairo_set_source_window
+#endif
+
+// ----------------------------------------------------------------------------
+// the following were introduced in Glib 2.32
+
+#ifndef g_signal_handlers_disconnect_by_data
+#define g_signal_handlers_disconnect_by_data(instance, data) \
+      g_signal_handlers_disconnect_matched ((instance), G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, (data))
 #endif
 
 // ----------------------------------------------------------------------------
