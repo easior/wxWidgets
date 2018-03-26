@@ -70,6 +70,11 @@ Changes in behaviour which may result in build errors
 All:
 
 - Make wxList and wxVector iterators conform to input iterator requirements.
+- Fix MT-safety problem when reading and writing from wxSocket (jkubalik).
+
+All (GUI):
+
+- Improve stock items consistency and aesthetics (dhowland).
 
 wxGTK:
 
@@ -78,6 +83,7 @@ wxGTK:
 wxMSW:
 
 - Fix hang after clearing wxTAB_TRAVERSAL style on a window with children.
+- Fix handling of AUX2 mouse button events (Trylz).
 
 
 3.1.1: (released 2018-02-19)
